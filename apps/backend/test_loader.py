@@ -1,5 +1,5 @@
 from app.services.document_loader import DocumentLoader
-from app.services.pdf_parser import PDFParser
+from apps.backend.app.parsers.pdf_parser import PDFParser
 
 loader = DocumentLoader("../../knowledge_base")
 parser = PDFParser()
