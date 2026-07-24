@@ -1,6 +1,6 @@
 import re
 
-from app.models.document import DocumentPage
+from app.models.document_page import DocumentPage
 from app.models.regulation import Regulation
 
 

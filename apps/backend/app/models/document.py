@@ -1,10 +1,9 @@
 from dataclasses import dataclass
+from pathlib import Path
 
 
 @dataclass
-class DocumentPage:
+class Document:
+    path: Path
     championship: str
     section: str
-    source: str
-    page: int
-    text: str

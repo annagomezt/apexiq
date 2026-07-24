@@ -3,7 +3,7 @@ from pathlib import Path
 
 import fitz
 
-from app.models.document import DocumentPage
+from app.models.document_page import DocumentPage
 
 logger = logging.getLogger(__name__)
 
