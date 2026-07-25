@@ -166,3 +166,5 @@ Thumbs.db
 apps/backend/data/
 *.faiss
 *.pkl
+
+.env
