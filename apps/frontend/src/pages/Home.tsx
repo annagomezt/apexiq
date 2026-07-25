@@ -1,13 +1,23 @@
 import { useState } from "react";
 
 import ChatInput from "../components/ChatInput";
+import ChatBubble from "../components/ChatBubble";
+
+import type { ChatMessage } from "../types/chat";
 
 export default function Home() {
 
-    const [answer, setAnswer] = useState("");
+    const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [loading, setLoading] = useState(false);
 
     async function handleSend(question: string) {
+
+        const userMessage: ChatMessage = {
+            role: "user",
+            content: question,
+        };
+
+        setMessages((old) => [...old, userMessage]);
 
         setLoading(true);
 
@@ -29,13 +39,28 @@ export default function Home() {
 
             const data = await response.json();
 
-            setAnswer(data.answer);
+            const assistantMessage: ChatMessage = {
+                role: "assistant",
+                content: data.answer,
+                sources: data.sources,
+            };
+
+            setMessages((old) => [...old, assistantMessage]);
 
         } catch (error) {
 
             console.error(error);
 
-            setAnswer("Error connecting to ApexIQ API.");
+            setMessages((old) => [
+
+                ...old,
+
+                {
+                    role: "assistant",
+                    content: "Error connecting to ApexIQ API.",
+                },
+
+            ]);
 
         }
 
@@ -47,13 +72,15 @@ export default function Home() {
 
         <main className="min-h-screen bg-slate-950 text-white">
 
-            <section className="mx-auto flex max-w-5xl flex-col items-center justify-center px-8 py-20">
+            <section className="mx-auto flex max-w-5xl flex-col px-8 py-16">
 
                 <h1 className="text-center text-6xl font-bold">
+
                     ApexIQ
+
                 </h1>
 
-                <p className="mt-6 max-w-2xl text-center text-lg text-slate-400">
+                <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-slate-400">
 
                     Ask anything about FIA regulations.
 
@@ -61,45 +88,48 @@ export default function Home() {
 
                 </p>
 
-                <ChatInput onSend={handleSend} />
+                <div className="mt-16 flex flex-col gap-6">
 
-                {loading && (
+                    {messages.map((message, index) => (
 
-                    <div className="mt-10 text-slate-400">
-                        Thinking...
-                    </div>
+                        <ChatBubble
+                            key={index}
+                            message={message}
+                        />
 
-                )}
+                    ))}
 
-                {!loading && answer && (
+                    {loading && (
 
-                    <div
-                        className="
-                            mt-10
-                            w-full
-                            rounded-2xl
-                            border
-                            border-slate-700
-                            bg-slate-900
-                            p-8
-                        "
-                    >
+                        <div className="flex justify-start">
 
-                        <h2 className="mb-4 text-xl font-semibold">
+                            <div
+                                className="
+                                    rounded-2xl
+                                    border
+                                    border-slate-700
+                                    bg-slate-900
+                                    px-5
+                                    py-4
+                                    text-slate-400
+                                "
+                            >
 
-                            Answer
+                                ApexIQ is thinking...
 
-                        </h2>
+                            </div>
 
-                        <p className="whitespace-pre-wrap text-slate-300">
+                        </div>
 
-                            {answer}
+                    )}
 
-                        </p>
+                </div>
 
-                    </div>
+                <div className="mt-10">
 
-                )}
+                    <ChatInput onSend={handleSend} />
+
+                </div>
 
             </section>
 
