@@ -1,14 +1,53 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
+import Sidebar from "../components/sidebar/Sidebar";
 import ChatInput from "../components/ChatInput";
 import ChatBubble from "../components/ChatBubble";
+import ThinkingBubble from "../components/ThinkingBubble";
 
 import type { ChatMessage } from "../types/chat";
+import type { Conversation } from "../types/conversation";
 
 export default function Home() {
 
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [loading, setLoading] = useState(false);
+
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+
+        messagesEndRef.current?.scrollIntoView({
+            behavior: "smooth",
+        });
+
+    }, [messages, loading]);
+
+    function handleNewChat() {
+
+        setMessages([]);
+
+    }
+
+    function handleSelectConversation(id: number) {
+
+        console.log("Conversation:", id);
+
+    }
+
+    const conversations: Conversation[] = [
+
+        {
+
+            id: 1,
+
+            title: "Current Chat",
+
+            messages,
+
+        },
+
+    ];
 
     async function handleSend(question: string) {
 
@@ -47,7 +86,9 @@ export default function Home() {
 
             setMessages((old) => [...old, assistantMessage]);
 
-        } catch (error) {
+        }
+
+        catch (error) {
 
             console.error(error);
 
@@ -70,66 +111,102 @@ export default function Home() {
 
     return (
 
-        <main className="min-h-screen bg-slate-950 text-white">
+        <main className="flex h-screen bg-slate-950 text-white">
 
-            <section className="mx-auto flex max-w-5xl flex-col px-8 py-16">
+            <Sidebar
 
-                <h1 className="text-center text-6xl font-bold">
+                conversations={conversations}
 
-                    ApexIQ
+                currentId={1}
 
-                </h1>
+                onSelect={handleSelectConversation}
 
-                <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-slate-400">
+                onNewChat={handleNewChat}
 
-                    Ask anything about FIA regulations.
+            />
 
-                    ApexIQ searches official FIA documents using AI and answers with grounded sources.
+            <section className="flex flex-1 flex-col">
 
-                </p>
+                <header className="border-b border-slate-800 px-10 py-8">
 
-                <div className="mt-16 flex flex-col gap-6">
+                    <h1 className="text-4xl font-bold">
 
-                    {messages.map((message, index) => (
+                        ApexIQ
 
-                        <ChatBubble
-                            key={index}
-                            message={message}
-                        />
+                    </h1>
 
-                    ))}
+                    <p className="mt-2 text-slate-400">
 
-                    {loading && (
+                        Ask anything about FIA Regulations.
 
-                        <div className="flex justify-start">
+                    </p>
 
-                            <div
-                                className="
-                                    rounded-2xl
-                                    border
-                                    border-slate-700
-                                    bg-slate-900
-                                    px-5
-                                    py-4
-                                    text-slate-400
-                                "
-                            >
+                </header>
 
-                                ApexIQ is thinking...
+                <div
+                    className="
+                        flex-1
+                        overflow-y-auto
+                        px-10
+                        py-8
+                    "
+                >
+
+                    <div className="mx-auto flex max-w-4xl flex-col gap-6">
+
+                        {messages.length === 0 && (
+
+                            <div className="mt-24 text-center">
+
+                                <h2 className="text-5xl font-bold">
+
+                                    Welcome to ApexIQ
+
+                                </h2>
+
+                                <p className="mt-5 text-lg text-slate-400">
+
+                                    Ask anything about Formula 1 FIA Regulations.
+
+                                </p>
 
                             </div>
 
-                        </div>
+                        )}
 
-                    )}
+                        {messages.map((message, index) => (
+
+                            <ChatBubble
+                                key={index}
+                                message={message}
+                            />
+
+                        ))}
+
+                        {loading && <ThinkingBubble />}
+
+                        <div ref={messagesEndRef} />
+
+                    </div>
 
                 </div>
 
-                <div className="mt-10">
+                <footer
+                    className="
+                        border-t
+                        border-slate-800
+                        px-10
+                        py-6
+                    "
+                >
 
-                    <ChatInput onSend={handleSend} />
+                    <div className="mx-auto max-w-4xl">
 
-                </div>
+                        <ChatInput onSend={handleSend} />
+
+                    </div>
+
+                </footer>
 
             </section>
 

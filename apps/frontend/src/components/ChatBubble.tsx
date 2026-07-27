@@ -1,3 +1,6 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 import type { ChatMessage } from "../types/chat";
 import SourceCard from "./SourceCard";
 
@@ -19,46 +22,89 @@ export default function ChatBubble({ message }: Props) {
 
             <div
                 className={`
+
                     max-w-3xl
-                    rounded-2xl
+                    rounded-3xl
                     px-6
                     py-5
-                    shadow-lg
-                    whitespace-pre-wrap
+                    shadow-xl
                     transition-all
                     duration-300
 
                     ${
                         isUser
                             ? "bg-blue-600 text-white"
-                            : "border border-slate-700 bg-slate-900 text-slate-300"
+                            : "border border-slate-700 bg-slate-900"
                     }
+
                 `}
             >
 
-                <div className="mb-3 text-sm font-semibold opacity-70">
+                <div
+                    className={`
+
+                        mb-4
+                        text-xs
+                        uppercase
+                        tracking-widest
+
+                        ${
+                            isUser
+                                ? "text-blue-100"
+                                : "text-blue-400"
+                        }
+
+                    `}
+                >
 
                     {isUser ? "You" : "🏎 ApexIQ"}
 
                 </div>
 
-                <div>
+                <div
+                    className={`
 
-                    {message.content}
+                        prose
+                        prose-invert
+                        max-w-none
+                        leading-7
 
-                    {message.sources && message.sources.length > 0 && (
+                        ${
+                            isUser
+                                ? "text-white"
+                                : "text-slate-300"
+                        }
+
+                    `}
+                >
+
+                    <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                    >
+                        {message.content}
+                    </ReactMarkdown>
+
+                </div>
+
+                {
+
+                    !isUser &&
+                    message.sources &&
+                    message.sources.length > 0 &&
+
+                    (
 
                         <>
 
-                            <hr className="my-6 border-slate-700" />
+                            <div className="my-6 h-px bg-slate-700" />
 
-                            <h3 className="mb-4 font-semibold text-slate-300">
+                            <h3 className="mb-3 text-sm font-semibold text-slate-400">
 
-                                Sources
+                                References
 
                             </h3>
 
-                            <div className="space-y-3">
+                            <div className="grid gap-4">
 
                                 {message.sources.map((source, index) => (
 
@@ -73,9 +119,9 @@ export default function ChatBubble({ message }: Props) {
 
                         </>
 
-                    )}
+                    )
 
-                </div>
+                }
 
             </div>
 

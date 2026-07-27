@@ -1,51 +1,53 @@
 class PromptBuilder:
 
-    def build(
-        self,
-        question: str,
-        contexts: list[dict],
-    ) -> str:
+    def build(self, question: str, documents: list):
 
-        context_text = ""
+        context = ""
 
-        for i, chunk in enumerate(contexts, start=1):
+        for doc in documents:
 
-            metadata = chunk["metadata"]
+            metadata = doc["metadata"]
 
-            context_text += (
-                f"\nDOCUMENT {i}\n"
-                f"Regulation: {metadata['regulation_id']}\n"
-                f"Page: {metadata['page']}\n"
-                f"Text:\n"
-                f"{metadata['text']}\n"
+            context += (
+                f"""
+Regulation ID: {metadata["regulation_id"]}
+Title: {metadata["title"]}
+Page: {metadata["page"]}
+
+{metadata["text"]}
+
+-------------------------
+
+"""
             )
 
         prompt = f"""
-You are ApexIQ, an AI assistant specialized in motorsport regulations.
+You are ApexIQ, an AI assistant specialized in FIA Formula 1 regulations.
 
-Answer ONLY using the provided documents.
+Your task is to answer ONLY using the regulations provided below.
 
-If the answer is not present, say:
+Rules:
 
-"I could not find this information in the available regulations."
+- Reply in the SAME LANGUAGE used by the user.
+- Never invent regulations.
+- Never make assumptions.
+- If the answer is not present in the context, clearly say that you do not have enough information.
+- Keep regulation IDs exactly as written.
+- Keep article references exactly as written.
+- Be concise, clear and professional.
+- When possible, mention the regulation ID and page used.
 
-Always cite the regulation ID and page number.
+=========================
+CONTEXT
+=========================
 
-==============================
-DOCUMENTS
-==============================
+{context}
 
-{context_text}
-
-==============================
+=========================
 QUESTION
-==============================
+=========================
 
 {question}
-
-==============================
-ANSWER
-==============================
 """
 
-        return prompt.strip()
+        return prompt

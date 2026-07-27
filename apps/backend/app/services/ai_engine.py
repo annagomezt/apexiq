@@ -24,7 +24,7 @@ class AIEngine:
 
         prompt = self.prompt_builder.build(
             question=question,
-            contexts=contexts,
+            documents=contexts,
         )
 
         answer = self.llm.generate(prompt)
