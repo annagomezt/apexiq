@@ -1,252 +1,452 @@
-<div align="center">
+<p align="center">
 
-# 🏎️ ApexIQ
+<img src="docs/banner.png" width="100%">
 
-### AI-Powered Enterprise Knowledge Platform
+</p>
 
-A modular Retrieval-Augmented Generation (RAG) platform capable of indexing, understanding and answering questions over documents from multiple domains using natural language.
+<h1 align="center">
+🏎 ApexIQ
+</h1>
 
-Designed for technical documentation, enterprise knowledge bases, regulations, manuals and structured documents.
+<p align="center">
+<b>AI Assistant for FIA Formula 1 Regulations</b>
+</p>
 
-> 🚧 **Developed as part of the Oracle Next Education (ONE) AI Agents Challenge.**
+<p align="center">
 
----
+An intelligent Retrieval-Augmented Generation (RAG) assistant capable of answering questions about the official FIA Formula One Sporting Regulations using semantic search and Large Language Models.
 
-![Status](https://img.shields.io/badge/status-under_development-orange)
-![Python](https://img.shields.io/badge/Python-3.13-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)
-![License](https://img.shields.io/badge/license-MIT-green)
-
-</div>
-
----
-
-# 📖 Overview
-
-ApexIQ is an AI-powered **Retrieval-Augmented Generation (RAG)** platform designed to transform collections of documents into an intelligent conversational knowledge base.
-
-Instead of manually browsing hundreds of pages of documentation, users can simply ask questions in natural language and receive accurate, explainable, and source-grounded answers.
-
-The platform combines document processing, semantic search, vector databases and Large Language Models (LLMs) to deliver reliable information while preserving references to the original source documents.
-
-Its modular architecture allows support for multiple document formats, multiple domains, multilingual responses and cloud-native deployment.
+</p>
 
 ---
 
-# 🎯 Example Use Cases
+## 🚀 Overview
 
-ApexIQ is domain-agnostic and can be adapted to different knowledge bases.
+ApexIQ is an AI-powered assistant developed to make FIA Formula One regulations easier to search, understand and explore.
 
-Possible applications include:
+Instead of manually browsing hundreds of pages of official documentation, users can ask questions in natural language and receive accurate, grounded answers with references to the original regulations.
 
-- 🏢 Enterprise Documentation
-- 📚 Technical Manuals
-- ⚖️ Legal & Compliance
-- 📑 HR Policies
-- 💰 Financial Documents
-- 📦 Operational Procedures
-- 📊 Business Reports
-- 🏥 Healthcare Documentation
-- 🎓 Educational Platforms
-- 🏎️ Motorsport Regulations
+The assistant combines:
 
-### Current Showcase Dataset
-
-- ✅ Formula 1 Regulations
-- ✅ Formula 2 Regulations
+- 📄 Official FIA Sporting Regulations
+- 🧠 Retrieval-Augmented Generation (RAG)
+- 🔍 Semantic Search
+- 🤖 Large Language Models
+- 🌍 Automatic multilingual responses
 
 ---
 
 # ✨ Features
 
-## 🤖 Artificial Intelligence
-
-- Retrieval-Augmented Generation (RAG)
-- Semantic Search
-- Source-Grounded Answers
-- Explainable Responses
-- Multilingual Support *(planned)*
-
-## 📚 Knowledge Base
-
-- Automatic Document Discovery
-- Intelligent Document Processing
-- Smart Chunk Generation
-- Metadata Extraction
-- Multi-Domain Knowledge Base
-
-## 📄 Supported Formats
-
-| Format | Status |
-|---------|:------:|
-| PDF | ✅ |
-| DOCX | 🚧 |
-| XLSX | 🚧 |
-| PPTX | 🚧 |
-| Markdown | 🚧 |
-| CSV | 🚧 |
-| JSON | 🚧 |
-| HTML | 🚧 |
-
-## ⚙️ Infrastructure
-
-- FastAPI Backend
-- Modular Architecture
-- REST API
-- OCI Cloud Deployment *(planned)*
+- ✅ Ask questions using natural language
+- ✅ Semantic document retrieval
+- ✅ Grounded answers with official references
+- ✅ Source citations
+- ✅ Multi-language support
+- ✅ Modern ChatGPT-inspired interface
+- ✅ Fast vector search
+- ✅ Responsive frontend
 
 ---
 
-# 🏗️ System Architecture
+# 🌍 Multi-language Support
 
-```text
-                Documents
+ApexIQ automatically detects the language used by the user.
 
- PDF   DOCX   XLSX   PPTX
-  │      │      │      │
- CSV  JSON  HTML  Markdown
-              │
-              ▼
-      Document Loaders
-              │
-              ▼
-    Unified Document Model
-              │
-              ▼
-     Document Pipeline
-              │
-              ▼
-     Smart Chunk Service
-              │
-              ▼
-     Embedding Generator
-              │
-              ▼
-      Vector Database
-          (FAISS)
-              │
-              ▼
-      Semantic Retriever
-              │
-              ▼
-     Large Language Model
-              │
-              ▼
-          REST API
-              │
-              ▼
-       React Frontend
+Examples:
+
+| User Language | Assistant Response |
+|---------------|-------------------|
+| English | English |
+| Portuguese | Portuguese |
+| German | German |
+| Spanish | Spanish |
+| French | French |
+| Italian | Italian |
+
+No language selection is required.
+
+---
+
+# 🏗 Architecture
+
+<p align="center">
+
+<img src="docs/architecture.png" width="900">
+
+</p>
+
+Workflow:
+
+```
+User
+
+↓
+
+React + Vite Frontend
+
+↓
+
+FastAPI Backend
+
+↓
+
+AI Engine
+
+├── Prompt Builder
+
+├── Retriever
+
+├── Embedding Model
+
+└── Vector Database
+
+↓
+
+Official FIA Regulations
+
+↓
+
+LLM
+
+↓
+
+Grounded Answer
 ```
 
 ---
 
-# 🚀 Technology Stack
+# ⚙ Tech Stack
 
-| Layer | Technologies |
-|--------|--------------|
-| Backend | Python · FastAPI |
-| AI | LangChain · Sentence Transformers · FAISS |
-| Frontend | React · TypeScript · TailwindCSS |
-| Vector Database | FAISS |
-| Cloud | Oracle Cloud Infrastructure (OCI) |
+## Frontend
 
----
+- React
+- TypeScript
+- TailwindCSS
+- Vite
 
-# 🛣️ Roadmap
+## Backend
 
-## ✅ Phase 1 — Foundation
+- FastAPI
+- Python
 
-- Backend Architecture
-- Knowledge Base
-- Automatic Document Discovery
-- PDF Processing
-- Document Pipeline
-- Smart Chunk Generation
+## AI
 
-## 🚧 Phase 2 — AI Core
+- LangChain
+- HuggingFace Embeddings
+- Sentence Transformers
+- ChromaDB
+- Retrieval-Augmented Generation (RAG)
 
-- Embedding Generation
-- Vector Database
-- Semantic Search
-- Retrieval Pipeline
-- Prompt Engineering
-- LLM Integration
+## Deployment
 
-## 📄 Phase 3 — Multi-Format Support
-
-- DOCX Loader
-- XLSX Loader
-- PPTX Loader
-- Markdown Loader
-- CSV Loader
-- JSON Loader
-- HTML Loader
-
-## ☁️ Phase 4 — Deployment
-
-- Docker
-- Oracle Cloud Infrastructure
-- CI/CD Pipeline
-- Production Environment
+- Vercel (Frontend)
+- Render / Oracle Cloud (Backend)
 
 ---
 
-# 📅 Development Status
+# 📂 Project Structure
 
-## Current Sprint
+```
+ApexIQ
 
-🟢 **Sprint 3 — AI Core**
+apps/
 
-### ✅ Completed
+    backend/
 
-- Backend Architecture
-- Knowledge Base
-- Automatic Document Discovery
-- PDF Parser
-- Domain Models
-- Document Pipeline
-- Regulation Extraction
-- Smart Chunk Generation
+        api/
 
-### 🚧 In Progress
+        services/
 
-- Embedding Generation
-- Vector Database (FAISS)
-- Semantic Search
+        models/
 
-### 📌 Planned
+        data/
 
-- Retrieval Pipeline
-- LLM Integration
-- Chat API
-- React Frontend
-- Multilingual Support
-- OCR Support
-- OCI Deployment
+    frontend/
 
----
+        src/
 
-# 📷 Preview
+            components/
 
-Application screenshots, architecture diagrams and deployment demonstrations will be added as development progresses.
+            pages/
+
+            types/
+
+docs/
+
+README.md
+```
 
 ---
 
-# 📚 Documentation
+# 🚀 Installation
 
-Project documentation is available in the `docs/` directory.
+## Clone repository
 
-Contents include:
+```bash
+git clone https://github.com/YOUR_USERNAME/apexiq.git
+```
 
-- Architecture
-- Roadmap
-- Sprint Notes
-- Architecture Decision Records (ADR)
-- API Documentation
-- Development Guidelines
+```
+cd apexiq
+```
 
 ---
 
-# 📜 License
+## Backend
 
-This project is licensed under the MIT License.
+```
+cd apps/backend
+```
+
+Create virtual environment
+
+```
+python -m venv .venv
+```
+
+Activate
+
+Windows
+
+```
+.venv\Scripts\activate
+```
+
+Linux
+
+```
+source .venv/bin/activate
+```
+
+Install dependencies
+
+```
+pip install -r requirements.txt
+```
+
+Run server
+
+```
+uvicorn main:app --reload
+```
+
+---
+
+## Frontend
+
+```
+cd apps/frontend
+```
+
+Install
+
+```
+npm install
+```
+
+Run
+
+```
+npm run dev
+```
+
+---
+
+# 🖥 Running
+
+Backend
+
+```
+http://127.0.0.1:8000
+```
+
+Frontend
+
+```
+http://localhost:5173
+```
+
+---
+
+# 📖 Example Questions
+
+English
+
+```
+What is the maximum speed allowed in the pit lane?
+```
+
+Portuguese
+
+```
+Qual é o limite de velocidade no pit lane?
+```
+
+German
+
+```
+Wie hoch ist das Tempolimit in der Boxengasse?
+```
+
+Spanish
+
+```
+¿Cuál es el límite de velocidad en el pit lane?
+```
+
+---
+
+# 💬 Example Response
+
+```
+According to Regulation B1.6.3 (Page 10),
+
+The speed limit in the pit lane is 80 km/h during the Competition.
+
+Source:
+Sporting Regulations
+Page 10
+```
+
+---
+
+# 📚 Dataset
+
+The assistant uses the official FIA Formula One Sporting Regulations as its knowledge base.
+
+Documents are:
+
+- Chunked
+- Embedded
+- Indexed
+- Retrieved using semantic similarity
+
+Only retrieved chunks are sent to the language model.
+
+---
+
+# 🔍 AI Pipeline
+
+```
+PDF
+
+↓
+
+Text Extraction
+
+↓
+
+Chunking
+
+↓
+
+Embeddings
+
+↓
+
+Vector Database
+
+↓
+
+Semantic Search
+
+↓
+
+Prompt Builder
+
+↓
+
+LLM
+
+↓
+
+Answer
+```
+
+---
+
+# 📸 Screenshots
+
+## Home
+
+<img src="docs/interface.png">
+
+---
+
+## Example Conversation
+
+<img src="docs/chat.png">
+
+---
+
+## Deploy
+
+<img src="docs/deploy.png">
+
+---
+
+# 📈 Future Improvements
+
+- Conversation history
+- Authentication
+- User accounts
+- OCR support
+- Multiple regulation versions
+- FIA Technical Regulations
+- FIA Financial Regulations
+- Streaming responses
+- Voice assistant
+- Mobile version
+
+---
+
+# 🎯 Challenge Requirements
+
+✔ GitHub Repository
+
+✔ Documentation
+
+✔ AI Agent
+
+✔ Retrieval-Augmented Generation
+
+✔ Semantic Search
+
+✔ PDF Processing
+
+✔ Deployment
+
+✔ Working Application
+
+---
+
+# 👩‍💻 Author
+
+**Ana Beatriz Gomes Santos**
+
+Software Engineering Student
+
+LinkedIn:
+
+https://linkedin.com/in/SEU-LINK
+
+GitHub:
+
+https://github.com/SEU-USUARIO
+
+---
+
+# 📄 License
+
+This project was developed for educational purposes as part of the **Oracle Next Education (ONE)** AI Challenge.
+
+The FIA documents remain the intellectual property of the Fédération Internationale de l'Automobile (FIA).
+
+---
+
+<p align="center">
+
+Made with ❤️ using Python, FastAPI, React and Artificial Intelligence.
+
+</p>

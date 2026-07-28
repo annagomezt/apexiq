@@ -1,5 +1,6 @@
+import { useState } from "react";
+
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 
 import type { ChatMessage } from "../types/chat";
 import SourceCard from "./SourceCard";
@@ -12,6 +13,22 @@ export default function ChatBubble({ message }: Props) {
 
     const isUser = message.role === "user";
 
+    const [copied, setCopied] = useState(false);
+
+    async function copyAnswer() {
+
+        await navigator.clipboard.writeText(message.content);
+
+        setCopied(true);
+
+        setTimeout(() => {
+
+            setCopied(false);
+
+        }, 2000);
+
+    }
+
     return (
 
         <div
@@ -22,7 +39,6 @@ export default function ChatBubble({ message }: Props) {
 
             <div
                 className={`
-
                     max-w-3xl
                     rounded-3xl
                     px-6
@@ -36,14 +52,16 @@ export default function ChatBubble({ message }: Props) {
                             ? "bg-blue-600 text-white"
                             : "border border-slate-700 bg-slate-900"
                     }
-
                 `}
             >
 
                 <div
                     className={`
-
                         mb-4
+                        flex
+                        items-center
+                        justify-between
+
                         text-xs
                         uppercase
                         tracking-widest
@@ -53,35 +71,62 @@ export default function ChatBubble({ message }: Props) {
                                 ? "text-blue-100"
                                 : "text-blue-400"
                         }
-
                     `}
                 >
 
-                    {isUser ? "You" : "🏎 ApexIQ"}
+                    <span>
+
+                        {isUser ? "You" : "🏎 ApexIQ"}
+
+                    </span>
+
+                    {
+
+                        !isUser &&
+
+                        <button
+
+                            onClick={copyAnswer}
+
+                            className="
+                                rounded-lg
+                                bg-slate-800
+                                px-3
+                                py-1
+                                text-[11px]
+                                font-medium
+                                transition
+                                hover:bg-slate-700
+                            "
+
+                        >
+
+                            {copied ? "Copied!" : "Copy"}
+
+                        </button>
+
+                    }
 
                 </div>
 
                 <div
                     className={`
-
                         prose
                         prose-invert
                         max-w-none
-                        leading-7
 
                         ${
                             isUser
                                 ? "text-white"
                                 : "text-slate-300"
                         }
-
                     `}
                 >
 
-                    <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                    >
+                    <ReactMarkdown>
+
                         {message.content}
+
                     </ReactMarkdown>
 
                 </div>
@@ -92,34 +137,37 @@ export default function ChatBubble({ message }: Props) {
                     message.sources &&
                     message.sources.length > 0 &&
 
-                    (
+                    <>
 
-                        <>
+                        <div className="my-6 h-px bg-slate-700" />
 
-                            <div className="my-6 h-px bg-slate-700" />
+                        <h3 className="mb-3 text-sm font-semibold text-slate-400">
 
-                            <h3 className="mb-3 text-sm font-semibold text-slate-400">
+                            References
 
-                                References
+                        </h3>
 
-                            </h3>
+                        <div className="grid gap-4">
 
-                            <div className="grid gap-4">
+                            {
 
-                                {message.sources.map((source, index) => (
+                                message.sources.map((source, index) => (
 
                                     <SourceCard
+
                                         key={index}
+
                                         source={source}
+
                                     />
 
-                                ))}
+                                ))
 
-                            </div>
+                            }
 
-                        </>
+                        </div>
 
-                    )
+                    </>
 
                 }
 

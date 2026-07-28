@@ -26,6 +26,7 @@ export default function Home() {
     function handleNewChat() {
 
         setMessages([]);
+        setLoading(false);
 
     }
 
@@ -97,8 +98,11 @@ export default function Home() {
                 ...old,
 
                 {
+
                     role: "assistant",
+
                     content: "Error connecting to ApexIQ API.",
+
                 },
 
             ]);
@@ -127,19 +131,61 @@ export default function Home() {
 
             <section className="flex flex-1 flex-col">
 
-                <header className="border-b border-slate-800 px-10 py-8">
+                <header
+                    className="
+                        flex
+                        items-center
+                        justify-between
+                        border-b
+                        border-slate-800
+                        px-10
+                        py-8
+                    "
+                >
 
-                    <h1 className="text-4xl font-bold">
+                    <div>
 
-                        ApexIQ
+                        <h1 className="text-4xl font-bold">
 
-                    </h1>
+                            ApexIQ
 
-                    <p className="mt-2 text-slate-400">
+                        </h1>
 
-                        Ask anything about FIA Regulations.
+                        <p className="mt-2 text-slate-400">
 
-                    </p>
+                            Ask anything about FIA Regulations.
+
+                        </p>
+
+                    </div>
+
+                    <button
+
+                        onClick={handleNewChat}
+
+                        disabled={messages.length === 0}
+
+                        className="
+                            rounded-xl
+                            border
+                            border-red-500
+                            px-5
+                            py-2
+                            text-red-400
+                            transition
+
+                            hover:bg-red-500
+                            hover:text-white
+
+                            disabled:cursor-not-allowed
+                            disabled:opacity-40
+                        "
+
+                    >
+
+                        Clear Chat
+
+                    </button>
 
                 </header>
 
@@ -154,36 +200,51 @@ export default function Home() {
 
                     <div className="mx-auto flex max-w-4xl flex-col gap-6">
 
-                        {messages.length === 0 && (
+                        {
 
-                            <div className="mt-24 text-center">
+                            messages.length === 0 && (
 
-                                <h2 className="text-5xl font-bold">
+                                <div className="mt-24 text-center">
 
-                                    Welcome to ApexIQ
+                                    <h2 className="text-5xl font-bold">
 
-                                </h2>
+                                        Welcome to ApexIQ
 
-                                <p className="mt-5 text-lg text-slate-400">
+                                    </h2>
 
-                                    Ask anything about Formula 1 FIA Regulations.
+                                    <p className="mt-5 text-lg text-slate-400">
 
-                                </p>
+                                        Ask anything about Formula 1 FIA Regulations.
 
-                            </div>
+                                    </p>
 
-                        )}
+                                </div>
 
-                        {messages.map((message, index) => (
+                            )
 
-                            <ChatBubble
-                                key={index}
-                                message={message}
-                            />
+                        }
 
-                        ))}
+                        {
 
-                        {loading && <ThinkingBubble />}
+                            messages.map((message, index) => (
+
+                                <ChatBubble
+
+                                    key={index}
+
+                                    message={message}
+
+                                />
+
+                            ))
+
+                        }
+
+                        {
+
+                            loading && <ThinkingBubble />
+
+                        }
 
                         <div ref={messagesEndRef} />
 
