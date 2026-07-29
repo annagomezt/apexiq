@@ -162,9 +162,4 @@ venv/
 .DS_Store
 Thumbs.db
 
-# FAISS Index (generated)
-apps/backend/data/
-*.faiss
-*.pkl
-
 .env
