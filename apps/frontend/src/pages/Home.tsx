@@ -5,6 +5,8 @@ import ChatInput from "../components/ChatInput";
 import ChatBubble from "../components/ChatBubble";
 import ThinkingBubble from "../components/ThinkingBubble";
 
+import { api } from "../services/api";
+
 import type { ChatMessage } from "../types/chat";
 import type { Conversation } from "../types/conversation";
 
@@ -63,26 +65,14 @@ export default function Home() {
 
         try {
 
-            const response = await fetch("http://127.0.0.1:8000/chat", {
-
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json",
-                },
-
-                body: JSON.stringify({
-                    question,
-                }),
-
+            const response = await api.post("/chat", {
+                question,
             });
-
-            const data = await response.json();
 
             const assistantMessage: ChatMessage = {
                 role: "assistant",
-                content: data.answer,
-                sources: data.sources,
+                content: response.data.answer,
+                sources: response.data.sources,
             };
 
             setMessages((old) => [...old, assistantMessage]);
