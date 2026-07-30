@@ -28,6 +28,12 @@ An intelligent Retrieval-Augmented Generation (RAG) assistant that enables users
 
 ➡ **https://content-healing-production-5f7c.up.railway.app/** ⬅
 
+## 🔗 Links
+
+- 🌐 **Live Demo:** https://apexiq-rust.vercel.app/
+- 🎥 **Demo Video:** https://youtu.be/xQ_6tzUXD7s
+- 💻 **Repository:** https://github.com/annagomezt/apexiq
+
 ---
 
 # 🚀 Overview
