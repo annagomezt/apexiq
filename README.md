@@ -12,13 +12,30 @@
 
 <p align="center">
 
-<img src="https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white">
-<img src="https://img.shields.io/badge/FastAPI-0.116-009688?logo=fastapi&logoColor=white">
-<img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black">
-<img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white">
-<img src="https://img.shields.io/badge/FAISS-Vector_Search-6C63FF">
-<img src="https://img.shields.io/badge/Google-Gemini-4285F4?logo=google&logoColor=white">
-<img src="https://img.shields.io/badge/License-MIT-green">
+<a href="https://apexiq-rust.vercel.app/">
+<img src="https://img.shields.io/badge/🌐_Live_Demo-000000?style=for-the-badge&logo=vercel&logoColor=white">
+</a>
+
+<a href="https://youtu.be/xQ_6tzUXD7s">
+<img src="https://img.shields.io/badge/▶_Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white">
+</a>
+
+<a href="https://github.com/annagomezt/apexiq/releases/tag/v1.0.0">
+<img src="https://img.shields.io/badge/Version-v1.0.0-2563EB?style=for-the-badge">
+</a>
+
+</p>
+
+<p align="center">
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white">
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/FAISS-6D28D9?style=flat-square">
+<img src="https://img.shields.io/badge/Sentence_Transformers-FF9800?style=flat-square">
+<img src="https://img.shields.io/badge/Google_Gemini-4285F4?style=flat-square&logo=google&logoColor=white">
+<img src="https://img.shields.io/badge/RAG-AI-111827?style=flat-square">
 
 </p>
 
