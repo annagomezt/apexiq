@@ -1,7 +1,5 @@
 <p align="center">
-
-<img src="docs/banner.png" width="100%">
-
+  <img src="docs/banner.png" width="100%">
 </p>
 
 <h1 align="center">
@@ -9,109 +7,98 @@
 </h1>
 
 <p align="center">
-<b>AI Assistant for FIA Formula 1 Regulations</b>
+<b>AI-powered FIA Formula One Regulations Assistant</b>
 </p>
 
 <p align="center">
 
-An intelligent Retrieval-Augmented Generation (RAG) assistant capable of answering questions about the official FIA Formula One Sporting Regulations using semantic search and Large Language Models.
+An intelligent Retrieval-Augmented Generation (RAG) assistant that enables users to search, understand, and interact with the official FIA Formula One Sporting Regulations using natural language.
 
 </p>
 
 ---
 
-## 🚀 Overview
+## 🌐 Live Demo
 
-ApexIQ is an AI-powered assistant developed to make FIA Formula One regulations easier to search, understand and explore.
+**Frontend**
 
-Instead of manually browsing hundreds of pages of official documentation, users can ask questions in natural language and receive accurate, grounded answers with references to the original regulations.
+➡ **https://apexiq-rust.vercel.app/** ⬅
 
-The assistant combines:
+**Backend API**
 
-- 📄 Official FIA Sporting Regulations
-- 🧠 Retrieval-Augmented Generation (RAG)
-- 🔍 Semantic Search
-- 🤖 Large Language Models
-- 🌍 Automatic multilingual responses
+➡ **https://content-healing-production-5f7c.up.railway.app/** ⬅
+
+---
+
+# 🚀 Overview
+
+ApexIQ transforms hundreds of pages of FIA Sporting Regulations into an interactive AI assistant.
+
+Instead of manually searching PDF files, users can ask questions in natural language and instantly receive grounded answers with references to the official regulations.
+
+The application combines modern AI techniques with semantic search to deliver accurate and explainable responses.
 
 ---
 
 # ✨ Features
 
-- ✅ Ask questions using natural language
-- ✅ Semantic document retrieval
-- ✅ Grounded answers with official references
-- ✅ Source citations
-- ✅ Multi-language support
-- ✅ Modern ChatGPT-inspired interface
-- ✅ Fast vector search
-- ✅ Responsive frontend
+- 🧠 AI-powered assistant
+- 📄 Official FIA Sporting Regulations knowledge base
+- 🔍 Semantic Search (Vector Database)
+- 🤖 Google Gemini integration
+- 📚 Source citations
+- 🌍 Automatic multilingual responses
+- ⚡ Fast Retrieval-Augmented Generation (RAG)
+- 💻 Modern ChatGPT-inspired interface
+- 📱 Responsive UI
+- ☁ Cloud deployment
 
 ---
 
 # 🌍 Multi-language Support
 
-ApexIQ automatically detects the language used by the user.
+ApexIQ automatically detects the user's language.
 
-Examples:
+| Language | Supported |
+|-----------|-----------|
+| English | ✅ |
+| Portuguese | ✅ |
+| Spanish | ✅ |
+| French | ✅ |
+| German | ✅ |
+| Italian | ✅ |
 
-| User Language | Assistant Response |
-|---------------|-------------------|
-| English | English |
-| Portuguese | Portuguese |
-| German | German |
-| Spanish | Spanish |
-| French | French |
-| Italian | Italian |
-
-No language selection is required.
+No manual language selection is required.
 
 ---
 
-# 🏗 Architecture
+# 🏗 System Architecture
 
 <p align="center">
-
 <img src="docs/architecture.png" width="900">
-
 </p>
-
-Workflow:
 
 ```
 User
-
-↓
-
+   │
+   ▼
 React + Vite Frontend
-
-↓
-
-FastAPI Backend
-
-↓
-
+   │
+   ▼
+FastAPI API
+   │
+   ▼
 AI Engine
-
-├── Prompt Builder
-
-├── Retriever
-
-├── Embedding Model
-
-└── Vector Database
-
-↓
-
-Official FIA Regulations
-
-↓
-
-LLM
-
-↓
-
-Grounded Answer
+   ├── Retriever
+   ├── Prompt Builder
+   ├── Gemini LLM
+   └── Vector Search
+   │
+   ▼
+FAISS Index
+   │
+   ▼
+Official FIA Sporting Regulations
 ```
 
 ---
@@ -124,70 +111,70 @@ Grounded Answer
 - TypeScript
 - TailwindCSS
 - Vite
+- Axios
 
 ## Backend
 
 - FastAPI
 - Python
 
-## AI
+## Artificial Intelligence
 
-- LangChain
-- HuggingFace Embeddings
+- Google Gemini API
 - Sentence Transformers
-- ChromaDB
+- FAISS
 - Retrieval-Augmented Generation (RAG)
+- Semantic Search
 
 ## Deployment
 
-- Vercel (Frontend)
-- Render / Oracle Cloud (Backend)
+- Vercel
+- Railway
 
 ---
 
 # 📂 Project Structure
 
-```
+```text
 ApexIQ
-
-apps/
-
-    backend/
-
-        api/
-
-        services/
-
-        models/
-
-        data/
-
-    frontend/
-
-        src/
-
-            components/
-
-            pages/
-
-            types/
-
-docs/
-
-README.md
+│
+├── apps
+│   ├── backend
+│   │   ├── app
+│   │   │   ├── api
+│   │   │   ├── models
+│   │   │   ├── services
+│   │   │   └── ...
+│   │   ├── data
+│   │   ├── main.py
+│   │   └── requirements.txt
+│   │
+│   └── frontend
+│       ├── src
+│       │   ├── components
+│       │   ├── pages
+│       │   ├── services
+│       │   └── ...
+│       └── package.json
+│
+├── docs
+│
+└── README.md
 ```
 
 ---
 
 # 🚀 Installation
 
-## Clone repository
+## Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/apexiq.git
+git clone https://github.com/annagomezt/apexiq
 ```
 
-```
+⬅ ALTERAR
+
+```bash
 cd apexiq
 ```
 
@@ -195,13 +182,13 @@ cd apexiq
 
 ## Backend
 
-```
+```bash
 cd apps/backend
 ```
 
 Create virtual environment
 
-```
+```bash
 python -m venv .venv
 ```
 
@@ -209,25 +196,31 @@ Activate
 
 Windows
 
-```
+```bash
 .venv\Scripts\activate
 ```
 
-Linux
+Linux/macOS
 
-```
+```bash
 source .venv/bin/activate
 ```
 
 Install dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
-Run server
+Create a `.env`
 
+```env
+GEMINI_API_KEY=YOUR_API_KEY
 ```
+
+Run
+
+```bash
 uvicorn main:app --reload
 ```
 
@@ -235,31 +228,25 @@ uvicorn main:app --reload
 
 ## Frontend
 
-```
+```bash
 cd apps/frontend
 ```
 
-Install
+Install dependencies
 
-```
+```bash
 npm install
 ```
 
 Run
 
-```
+```bash
 npm run dev
 ```
 
 ---
 
-# 🖥 Running
-
-Backend
-
-```
-http://127.0.0.1:8000
-```
+# 🖥 Local URLs
 
 Frontend
 
@@ -267,101 +254,44 @@ Frontend
 http://localhost:5173
 ```
 
+Backend
+
+```
+http://127.0.0.1:8000
+```
+
+Swagger
+
+```
+http://127.0.0.1:8000/docs
+```
+
 ---
 
-# 📖 Example Questions
+# 💬 Example Questions
 
-English
+### English
 
 ```
 What is the maximum speed allowed in the pit lane?
 ```
 
-Portuguese
+### Portuguese
 
 ```
 Qual é o limite de velocidade no pit lane?
 ```
 
-German
-
-```
-Wie hoch ist das Tempolimit in der Boxengasse?
-```
-
-Spanish
+### Spanish
 
 ```
 ¿Cuál es el límite de velocidad en el pit lane?
 ```
 
----
-
-# 💬 Example Response
+### German
 
 ```
-According to Regulation B1.6.3 (Page 10),
-
-The speed limit in the pit lane is 80 km/h during the Competition.
-
-Source:
-Sporting Regulations
-Page 10
-```
-
----
-
-# 📚 Dataset
-
-The assistant uses the official FIA Formula One Sporting Regulations as its knowledge base.
-
-Documents are:
-
-- Chunked
-- Embedded
-- Indexed
-- Retrieved using semantic similarity
-
-Only retrieved chunks are sent to the language model.
-
----
-
-# 🔍 AI Pipeline
-
-```
-PDF
-
-↓
-
-Text Extraction
-
-↓
-
-Chunking
-
-↓
-
-Embeddings
-
-↓
-
-Vector Database
-
-↓
-
-Semantic Search
-
-↓
-
-Prompt Builder
-
-↓
-
-LLM
-
-↓
-
-Answer
+Wie hoch ist das Tempolimit in der Boxengasse?
 ```
 
 ---
@@ -374,50 +304,42 @@ Answer
 
 ---
 
-## Example Conversation
+## Chat
 
 <img src="docs/chat.png">
 
 ---
 
-## Deploy
+# 📚 Knowledge Base
 
-<img src="docs/deploy.png">
+The assistant is built upon the official FIA Formula One Sporting Regulations.
 
----
+Processing pipeline:
 
-# 📈 Future Improvements
+- PDF Extraction
+- Text Chunking
+- Embedding Generation
+- FAISS Indexing
+- Semantic Retrieval
+- Prompt Construction
+- Gemini Response Generation
 
-- Conversation history
-- Authentication
-- User accounts
-- OCR support
-- Multiple regulation versions
-- FIA Technical Regulations
-- FIA Financial Regulations
-- Streaming responses
-- Voice assistant
-- Mobile version
+Only the retrieved document chunks are sent to the language model, reducing hallucinations and improving factual accuracy.
 
 ---
 
-# 🎯 Challenge Requirements
+# 🛣 Roadmap
 
-✔ GitHub Repository
-
-✔ Documentation
-
-✔ AI Agent
-
-✔ Retrieval-Augmented Generation
-
-✔ Semantic Search
-
-✔ PDF Processing
-
-✔ Deployment
-
-✔ Working Application
+- [ ] Conversation history
+- [ ] Authentication
+- [ ] User accounts
+- [ ] Multiple FIA regulation versions
+- [ ] FIA Technical Regulations
+- [ ] FIA Financial Regulations
+- [ ] Streaming responses
+- [ ] Voice assistant
+- [ ] Mobile version
+- [ ] Dark/Light themes
 
 ---
 
@@ -427,13 +349,13 @@ Answer
 
 Software Engineering Student
 
-LinkedIn:
+GitHub
 
-https://linkedin.com/in/SEU-LINK
+➡ https://github.com/annagomezt ⬅ 
 
-GitHub:
+LinkedIn
 
-https://github.com/SEU-USUARIO
+➡ https://www.linkedin.com/in/anagomes-swe/ ⬅
 
 ---
 
@@ -441,12 +363,12 @@ https://github.com/SEU-USUARIO
 
 This project was developed for educational purposes as part of the **Oracle Next Education (ONE)** AI Challenge.
 
-The FIA documents remain the intellectual property of the Fédération Internationale de l'Automobile (FIA).
+All FIA documents remain the intellectual property of the Fédération Internationale de l'Automobile (FIA).
 
 ---
 
 <p align="center">
 
-Made with ❤️ using Python, FastAPI, React and Artificial Intelligence.
+Made with ❤️ using FastAPI, React, Python and Artificial Intelligence.
 
 </p>
