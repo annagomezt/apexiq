@@ -31,7 +31,6 @@ An intelligent Retrieval-Augmented Generation (RAG) assistant that enables users
 ## 🔗 Links
 
 - 🎥 **Demo Video:** https://youtu.be/xQ_6tzUXD7s
-- 💻 **Repository:** https://github.com/annagomezt/apexiq
 
 ---
 
