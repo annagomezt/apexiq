@@ -12,6 +12,18 @@
 
 <p align="center">
 
+<img src="https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/FastAPI-0.116-009688?logo=fastapi&logoColor=white">
+<img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/FAISS-Vector_Search-6C63FF">
+<img src="https://img.shields.io/badge/Google-Gemini-4285F4?logo=google&logoColor=white">
+<img src="https://img.shields.io/badge/License-MIT-green">
+
+</p>
+
+<p align="center">
+
 An intelligent Retrieval-Augmented Generation (RAG) assistant that enables users to search, understand, and interact with the official FIA Formula One Sporting Regulations using natural language.
 
 </p>
