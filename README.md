@@ -306,7 +306,7 @@ Wie hoch ist das Tempolimit in der Boxengasse?
 
 ## Chat
 
-<img src="docs/chat.png">
+<img src="docs/image.png">
 
 ---
 
